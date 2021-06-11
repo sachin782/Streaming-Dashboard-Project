@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<head>
+<title>Horizon chart using D3</title>
+<h1>Horizon Chart</h1>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
+    .horizon {
+        border-top: solid 1px #000;
+        border-bottom: solid 1px #000;
+        overflow: hidden;
+        position: relative;
+    }
+</style>
+</head>
+<body>
+<script src="d3.min.js"></script>
+<script src="https://npmcdn.com/d3-horizon-chart/build/d3-horizon-chart.min.js"></script>
+<script>
+var series = [];
+for (var i = 0, variance = 0, value; i < 1500; i++) {
+    variance += (Math.random() - 0.5) / 10;
+    series.push(Math.abs(Math.cos(i/100) + variance));
+}
+var horizonChart = d3.horizonChart()
+var horizons = d3.select('body').selectAll('.horizon')
+    .data(d3.range(0, 4).map(function() {return series;}))
+    .enter().append('div')
+    .attr('class', 'horizon')
+    .each(function(d, i) {
+        var height = 120 / (i + 1);
+        horizonChart.height(height)
+            .title('Area (' + height + 'px)')
+            .call(this, d);
+    });
+</script>

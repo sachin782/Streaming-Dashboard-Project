@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>D3 Squares using Data</title>
+	<h1>Squares using data</h1>
+    <script type="text/javascript" src="d3.min.js"></script>
+  </head>
+  <body>
+ <svg>
+	<rect x="25" y="75" width="20" height="100" style="fill:orange;" />
+</svg>
+ <svg>
+	<rect x="50" y="75" width="20" height="100" style="fill:orange;" />
+</svg>
+ <svg>
+	<rect x="75" y="75" width="20" height="100" style="fill:orange;" />
+</svg>
+ <svg>
+	<rect x="100" y="75" width="20" height="100" style="fill:orange;" />
+</svg>
+<svg>
+	<rect x="125" y="75" width="20" height="100" style="fill:orange;" />
+</svg>
+	<script>
+	var scores = [ 10, 25, 35, 55, 65];
+	d3.selectAll('rect')
+  .data(scores)
+  .attr('width', function(d) {
+  return d;
+  })
+  .attr('height', function(d) {
+  return d;
+  });
+	</script>
+</body>
+</html>
